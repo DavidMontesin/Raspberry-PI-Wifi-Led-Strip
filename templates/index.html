@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title> Wifi Led Strip </title>
+<meta name="viewpoint" content = "width = device-width, initial-scale = 1.0, minimum-scale = 1, maximum-scale = 1, user-scalable = no" /> <meta name="apple-mobile-web-app-title" content="Wifi Led" /> <meta name="apple-mobile-web-app-capable" content="yes" />  
+<link rel=stylesheet type=text/css href="{{ url_for('static', filename='Style.css') }}">
+</head> <body>
+    <table class="Colours" cellspacing="10" border="0">
+        <tr>
+            <td onClick="SendColour('Orange')" class="button" style="background-color: rgb(255,136,0);"></td>
+            <td onClick="SendColour('Red')" class="button" style="background-color: red;"></td>
+        </tr>
+        <tr>
+            <td onClick="SendColour('Green')" class="2ndrow button" style="background-color: green;"></td>
+            <td onClick="SendColour('LightBlue')" class="2ndrow button" style="background-color: lightblue;"></td>
+        </tr>
+        <tr>
+            <td onClick="SendColour('DarkBlue')" class="3rdrow button" style="background-color: darkblue;"></td>
+            <td onClick="SendColour('White')" class="3rdrow button" style="background-color: rgba(158,158,158,1.00);"></td>
+        </tr>
+        <tr>
+            <td onClick="SendColour('Pink')" class="3rdrow button" style="background-color: pink;"></td>
+            <td onClick="SendColour('Yellow')" class="3rdrow button" style="background-color: yellow;"></td>
+        </tr>
+        <tr>
+            <td onClick="SendColour('Purple')" class="3rdrow button" style="background-color: purple;"></td>
+            <td onClick="SendColour('Black')" class="3rdrow button" style="background-color: black;"></td>
+        </tr>
+        
+        </tr>
+        
+    </table>
+<script>
+function SendColour(ClickedColour) { 
+xhttp = new XMLHttpRequest();
+
+xhttp.open("GET", "?Colour=" + ClickedColour, false);
+xhttp.send();
+
+}
+</script>
+</body>
+</html>
