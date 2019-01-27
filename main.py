@@ -1,9 +1,8 @@
 from flask import Flask, render_template, request
-
 import pigpio
-
 from thread import start_new_thread
 import time
+
 app = Flask(__name__)
 
 CurrentColour = "White"
@@ -29,40 +28,25 @@ def Main():
 			FadeTORGB(255,255,255)
 		elif CurrentColour == "Red":
 			FadeTORGB(255,0,0)
-
 		elif CurrentColour == "Green":
-
 			FadeTORGB(0,255,0)
-
 		elif CurrentColour == "DarkBlue":
-
 			FadeTORGB(0,0,255)
-
 		elif CurrentColour == "LightBlue":
 			FadeTORGB(0,255,255)
-
 		elif CurrentColour == "Orange":
-
 			FadeTORGB(255,15,0)
 		elif CurrentColour == "Pink":
-
 			FadeTORGB(255,0,192)
-
 		elif CurrentColour == "Yellow":
-
 			FadeTORGB(255,157,0)
-
 		elif CurrentColour == "Purple":
-
 			FadeTORGB(123,0,255)
-
 		elif CurrentColour == "Black":
-
 			FadeTORGB(0,0,0)
 		return render_template('index.html')
 
 @app.route('/Effect', methods=['GET'])
-
 def Effect():
 	x = 0
 	global RedColourCode
@@ -72,27 +56,23 @@ def Effect():
 	global BlueBeforeEffect 
 	global GreenBeforeEffect
 	if request.args.get('Call'):
-
 		RedBeforeEffect = RedColourCode
 		BlueBeforeEffect = BlueColourCode
 		GreenBeforeEffect = GreenColourCode
-
 		FadeTORGB(0,0,0)
 	        time.sleep(5)
 		CanChangeColour = True
        	while x <= 5:
 		FadeTORGB(0,255,0)
 		x +=1
-
 		time.sleep(1)
 		FadeTORGB(0,0,0)
 		time.sleep(1)
 	CanChangeColour = True
 	time.sleep(2)
 	FadeTORGB(RedBeforeEffect,BlueBeforeEffect,GreenBeforeEffect)
-
-
 	return ""        	
+
 def FadeTORGB(RedNum,BlueNum,GreenNum):
     start_new_thread(FadeUpRed,(RedNum,))
     start_new_thread(FadeUpBlue,(BlueNum,))
